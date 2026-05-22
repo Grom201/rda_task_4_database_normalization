@@ -1,5 +1,5 @@
 -- Create database and tables
-
+DROP DATABASE ShopDB;
 CREATE DATABASE ShopDB;
 USE ShopDB;
 
@@ -26,13 +26,12 @@ CREATE TABLE Warehouses (
 
 CREATE TABLE ProductInventory (
     ID INT,
-    ProductName VARCHAR(50),
+    ProductID INT,
     WarehouseAmount INT,
-    WarehouseName VARCHAR(50),
-    WarehouseAddress VARCHAR(50), 
-    CountryID INT,
-	FOREIGN KEY (CountryID) REFERENCES Countries(ID) ON DELETE NO ACTION,
-    PRIMARY KEY (ID)
+    WarehouseID INT,
+    PRIMARY KEY (ID),
+    FOREIGN KEY (ProductID) REFERENCES Products(ID) ON DELETE NO ACTION,
+    FOREIGN KEY (WarehouseID) REFERENCES Warehouses(ID) ON DELETE NO ACTION
 );
 
 -- Populate test data
